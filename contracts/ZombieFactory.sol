@@ -46,7 +46,7 @@ contract ZombieFactory is Ownable{
 
     //require使得函数在执行过程中，当不满足某些条件时抛出错误，并停止执行
     function createRandomZombie(string memory _name) public {
-        require(ownerZombieCount[msg.sender] == 0);
+        require(ownerZombieCount[msg.sender] == 0, "owner already has a zombie!");
         uint randDna = _generateRandomDna(_name);
         _createZombie(_name, randDna);
     }
